@@ -1,5 +1,9 @@
 # Dependencies
 node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
 
 # Logs
 logs
@@ -7,15 +11,26 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Environment variables
 .env
 .env.local
 .env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
 
 # IDE
 .vscode/
@@ -23,14 +38,39 @@ Thumbs.db
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
 # Build outputs
 dist/
+**/dist/
 .next/
+**/.next/
 out/
+**/out/
 build/
+**/build/
+*.tsbuildinfo
 
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+**/next-env.d.ts
 
+# Testing
+coverage/
+**/coverage/
+.nyc_output
+
+# Vercel
+.vercel
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Package manager locks (optional - some teams commit these)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

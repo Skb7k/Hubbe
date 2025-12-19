@@ -1,7 +1,23 @@
+'use client'
+
+import { useState } from 'react';
 import SearchBar from './SearchBar'
 import JobFilters from './JobFilters'
+import type { JobFilters as JobFiltersType } from '../../lib/types/filters';
+import { defaultFilters } from '../../lib/types/filters';
 
-export default function JobSearchSection() {
+interface JobSearchSectionProps {
+  onFiltersChange: (filters: JobFiltersType) => void;
+}
+
+export default function JobSearchSection({ onFiltersChange }: JobSearchSectionProps) {
+  const [filters, setFilters] = useState<JobFiltersType>(defaultFilters);
+
+  const handleFiltersChange = (newFilters: JobFiltersType) => {
+    setFilters(newFilters);
+    onFiltersChange(newFilters);
+  };
+
   return (
     <div className="w-full border-b border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -12,10 +28,11 @@ export default function JobSearchSection() {
 
         {/* Filter Buttons */}
         <div>
-          <JobFilters />
+          <JobFilters filters={filters} onFiltersChange={handleFiltersChange} />
         </div>
       </div>
     </div>
   )
 }
+
 
